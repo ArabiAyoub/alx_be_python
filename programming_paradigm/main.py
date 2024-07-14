@@ -1,18 +1,25 @@
 # main.py
 
 import sys
-from robust_division_calculator import safe_divide
+from simple_calculator import SimpleCalculator
 
 def main():
     if len(sys.argv) != 3:
-        print("Usage: python main.py <numerator> <denominator>")
-        sys.exit(1)
+        print("Usage: python main.py <num1> <num2>")
+        return
 
-    numerator = sys.argv[1]
-    denominator = sys.argv[2]
+    num1 = float(sys.argv[1])
+    num2 = float(sys.argv[2])
 
-    result = safe_divide(numerator, denominator)
-    print(result)
+    calc = SimpleCalculator()
+
+    try:
+        result = calc.divide(num1, num2)
+        if result is None:
+            raise ValueError("Cannot divide by zero.")
+        print("Result: {}".format(result))
+    except ValueError as e:
+        print("Error: {}".format(e))
 
 if __name__ == "__main__":
     main()
