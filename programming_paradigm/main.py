@@ -1,25 +1,26 @@
 # main.py
 
-import sys
-from simple_calculator import SimpleCalculator
+from library_management import Book, Library
 
 def main():
-    if len(sys.argv) != 3:
-        print("Usage: python main.py <num1> <num2>")
-        return
+    # Setup a small library
+    library = Library()
+    library.add_book(Book("Brave New World", "Aldous Huxley"))
+    library.add_book(Book("1984", "George Orwell"))
 
-    num1 = float(sys.argv[1])
-    num2 = float(sys.argv[2])
+    # Initial list of available books
+    print("Available books after setup:")
+    library.list_available_books()
 
-    calc = SimpleCalculator()
+    # Simulate checking out a book
+    library.check_out_book("1984")
+    print("\nAvailable books after checking out '1984':")
+    library.list_available_books()
 
-    try:
-        result = calc.divide(num1, num2)
-        if result is None:
-            raise ValueError("Cannot divide by zero.")
-        print("Result: {}".format(result))
-    except ValueError as e:
-        print("Error: {}".format(e))
+    # Simulate returning a book
+    library.return_book("1984")
+    print("\nAvailable books after returning '1984':")
+    library.list_available_books()
 
 if __name__ == "__main__":
     main()
