@@ -1,5 +1,6 @@
 # library_system.py
 
+# class Book:
 class Book(object):  # Inherits from object to be a new-style class
     def __init__(self, title, author):
         self.title = title
@@ -8,6 +9,7 @@ class Book(object):  # Inherits from object to be a new-style class
     def __str__(self):
         return "Book: {} by {}".format(self.title, self.author)
 
+# class EBook:
 class EBook(Book):
     def __init__(self, title, author, file_size):
         super(EBook, self).__init__(title, author)  # Correct usage of super() in Python 2
@@ -16,14 +18,16 @@ class EBook(Book):
     def __str__(self):
         return "EBook: {} by {}, File Size: {}KB".format(self.title, self.author, self.file_size)
 
+# class PrintBook:
 class PrintBook(Book):
     def __init__(self, title, author, page_count):
         super(PrintBook, self).__init__(title, author)  # Correct usage of super() in Python 2
         self.page_count = page_count
 
     def __str__(self):
-        return "PrintBook: {} by {}, Page Count: {}".format(self.title, self.author, self.page_count)
+        return "PrintBook: {} by {}, Page Count: {}".format(self.title, self.author, this.page_count)
 
+# class Library:
 class Library(object):  # Inherits from object
     def __init__(self):
         self.books = []
